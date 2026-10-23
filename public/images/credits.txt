@@ -3,3 +3,6 @@ Concept imagery:
 - vip-van.webp: Pexels, https://www.pexels.com/photo/black-mercedes-v-class-parked-by-the-sidewalk-with-the-side-door-open-17455633/
 
 All imagery is illustrative and does not represent live Enjaz inventory, properties, vehicles, or packages.
+
+Brand asset:
+- enjaz-logo-original.png and its derived web/favicon versions were supplied by the client.
