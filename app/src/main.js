@@ -108,6 +108,37 @@ if (reduceMotion || !("IntersectionObserver" in window)) {
   revealElements.forEach((element) => revealObserver.observe(element));
 }
 
+/* Play the process route only while it is visible */
+const processSteps = $(".process-steps");
+const processLine = processSteps ? $(".process-line", processSteps) : null;
+const processMobile = window.matchMedia("(max-width: 760px)");
+if (processSteps && processLine && typeof processLine.pauseAnimations === "function") {
+  let processInView = false;
+  processLine.pauseAnimations();
+  processLine.setCurrentTime(0);
+
+  const syncProcessAnimation = () => {
+    const active = processInView && !document.hidden && !reduceMotion;
+    processSteps.classList.toggle("is-route-active", active);
+    if (active && !processMobile.matches) processLine.unpauseAnimations();
+    else processLine.pauseAnimations();
+  };
+
+  if ("IntersectionObserver" in window) {
+    const processObserver = new IntersectionObserver((entries) => {
+      processInView = entries[0].isIntersecting;
+      syncProcessAnimation();
+    }, { threshold: 0.2 });
+    processObserver.observe(processSteps);
+  } else {
+    processInView = true;
+  }
+  document.addEventListener("visibilitychange", syncProcessAnimation);
+  if (processMobile.addEventListener) processMobile.addEventListener("change", syncProcessAnimation);
+  else processMobile.addListener(syncProcessAnimation);
+  syncProcessAnimation();
+}
+
 /* Small magnetic CTA movement on precise pointers */
 if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
   $$('[data-magnetic]').forEach((element) => {
