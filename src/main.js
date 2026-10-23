@@ -167,7 +167,7 @@ $$('[data-preference]').forEach((button) => {
 const packages = {
   istanbul: {
     destination: "Istanbul",
-    image: "/images/istanbul.webp",
+    image: "./images/istanbul.webp",
     days: 4,
     title: { en: "Istanbul, at your own pace", ar: "إسطنبول، على إيقاعك الخاص" },
     style: { en: "Culture · City", ar: "ثقافة · مدينة" },
@@ -183,7 +183,7 @@ const packages = {
   },
   cappadocia: {
     destination: "Cappadocia",
-    image: "/images/cappadocia.webp",
+    image: "./images/cappadocia.webp",
     days: 3,
     title: { en: "Cappadocia after dawn", ar: "كابادوكيا بعد الفجر" },
     style: { en: "Nature · Wonder", ar: "طبيعة · دهشة" },
@@ -199,7 +199,7 @@ const packages = {
   },
   blacksea: {
     destination: "Black Sea",
-    image: "/images/black-sea.webp",
+    image: "./images/black-sea.webp",
     days: 5,
     title: { en: "The Black Sea, slowly", ar: "البحر الأسود، دون استعجال" },
     style: { en: "Nature · Slow travel", ar: "طبيعة · سفر هادئ" },

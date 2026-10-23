@@ -16,6 +16,18 @@ npm run build
 npm run preview
 ```
 
+## GitHub Pages
+
+The production build uses relative asset URLs, so it works from the repository subpath at `https://hossam-mohamed-abd.github.io/enjaz/`.
+
+A deployment workflow is included at `.github/workflows/deploy.yml`:
+
+1. Open **Repository Settings → Pages**.
+2. Set **Source** to **GitHub Actions**.
+3. Merge these changes into `main`, or run the **Deploy website to GitHub Pages** workflow manually.
+
+Do not publish the repository source root directly. GitHub Pages must serve the generated `dist` output created by `npm run build`; the workflow handles this automatically.
+
 ## Included
 
 - Responsive editorial landing page
