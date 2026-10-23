@@ -62,8 +62,6 @@ for (const file of imageFiles) {
   javascript = javascript.split(sourcePath).join(uri);
 }
 
-const favicon = await readFile(join(projectRoot, "public", "favicon.svg"));
-html = html.split("./favicon.svg").join(dataUri(favicon, "image/svg+xml"));
 html = html.replace("<!-- ENJAZ_STYLES -->", () => `<style>\n${css}\n</style>`);
 html = html.replace(
   '<script type="module" src="./src/main.js"></script>',
@@ -78,7 +76,7 @@ const unresolvedPaths = [
   "<!-- ENJAZ_STYLES -->",
   'src="./src/main.js"',
   'src="./images/',
-  'href="./favicon.svg"'
+  'href="./images/'
 ].filter((path) => html.includes(path));
 if (unresolvedPaths.length) {
   throw new Error(`Unresolved standalone assets: ${unresolvedPaths.join(", ")}`);
