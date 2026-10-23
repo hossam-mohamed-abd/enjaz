@@ -328,7 +328,29 @@
         <div class="container">
           <div class="section-header" data-reveal><div><div class="eyebrow"><span class="section-number">06</span><span data-i18n="process.eyebrow">HOW IT FEELS</span></div><h2 data-i18n="process.title">From first hello<br />to final mile.</h2></div><p data-i18n="process.body">Simple for you. Thoughtfully connected behind the scenes.</p></div>
           <div class="process-steps" data-reveal>
-            <svg class="process-line" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path d="M20 82C210 10 345 118 550 58S930 105 1180 25" /><circle cx="20" cy="82" r="7"/><circle cx="590" cy="55" r="7"/><circle cx="1180" cy="25" r="7"/></svg>
+            <svg class="process-line" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="process-route-gradient" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#b86b3d" />
+                  <stop offset="0.52" stop-color="#2baeaa" />
+                  <stop offset="1" stop-color="#b86b3d" />
+                </linearGradient>
+              </defs>
+              <path class="process-line-base" d="M24 78C180 78 205 24 365 24C465 24 510 72 600 72C690 72 735 24 835 24C995 24 1020 78 1176 78" />
+              <path class="process-line-progress" pathLength="1" d="M24 78C180 78 205 24 365 24C465 24 510 72 600 72C690 72 735 24 835 24C995 24 1020 78 1176 78" />
+              <g class="process-stop process-stop--1" transform="translate(24 78)"><circle class="process-stop-ring" r="13" /><circle class="process-stop-halo" r="10" /><circle class="process-stop-dot" r="4.5" /></g>
+              <g class="process-stop process-stop--2" transform="translate(600 72)"><circle class="process-stop-ring" r="13" /><circle class="process-stop-halo" r="10" /><circle class="process-stop-dot" r="4.5" /></g>
+              <g class="process-stop process-stop--3" transform="translate(1176 78)"><circle class="process-stop-ring" r="13" /><circle class="process-stop-halo" r="10" /><circle class="process-stop-dot" r="4.5" /></g>
+              <g class="process-traveler">
+                <circle class="process-traveler-trail process-traveler-trail--far" cx="-29" cy="0" r="2.5" />
+                <circle class="process-traveler-trail process-traveler-trail--near" cx="-18" cy="0" r="3.5" />
+                <circle class="process-traveler-halo" r="18" />
+                <circle class="process-traveler-core" r="10" />
+                <path class="process-traveler-plane" d="M-6-4.5 8 0-6 4.5-3 0Z" />
+                <animateMotion dur="10s" repeatCount="indefinite" rotate="auto" path="M24 78C180 78 205 24 365 24C465 24 510 72 600 72C690 72 735 24 835 24C995 24 1020 78 1176 78" keyPoints="0;1;1" keyTimes="0;0.78;1" calcMode="spline" keySplines="0.45 0 0.55 1;0 0 1 1" />
+                <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.05;0.8;0.92;1" dur="10s" repeatCount="indefinite" />
+              </g>
+            </svg>
             <article><span>01</span><div class="process-icon"><svg class="icon"><use href="#i-compass"></use></svg></div><h3 data-i18n="process.step1title">Share your rhythm</h3><p data-i18n="process.step1body">Tell us where, when, and how you love to travel.</p></article>
             <article><span>02</span><div class="process-icon"><svg class="icon"><use href="#i-route"></use></svg></div><h3 data-i18n="process.step2title">Shape the details</h3><p data-i18n="process.step2body">Bring your route, stay, and mobility into one clear plan.</p></article>
             <article><span>03</span><div class="process-icon"><svg class="icon"><use href="#i-spark"></use></svg></div><h3 data-i18n="process.step3title">Make it your story</h3><p data-i18n="process.step3body">Focus on the moments while the journey stays connected.</p></article>

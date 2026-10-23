@@ -427,14 +427,78 @@ html[dir="rtl"] .mobility-visual { border-radius: 18px 18px 18px 180px; }
 /* Process */
 .process { padding-bottom: 160px; }
 .process-steps { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 80px; margin-top: 90px; }
-.process-line { position: absolute; inset: -48px 0 auto; width: 100%; height: 100px; overflow: visible; }
-.process-line path { fill: none; stroke: var(--sand); stroke-width: 2; stroke-dasharray: 8 9; }
-.process-line circle { fill: var(--copper); }
+.process-line { position: absolute; inset: -90px 0 auto; width: 100%; height: 100px; overflow: visible; pointer-events: none; }
+html[dir="rtl"] .process-line { transform: scaleX(-1); }
+.process-line-base,
+.process-line-progress { fill: none; stroke-linecap: round; }
+.process-line-base { stroke: var(--sand); stroke-width: 1.5; stroke-dasharray: 2 10; }
+.process-line-progress {
+  stroke: url(#process-route-gradient);
+  stroke-width: 2.25;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
+  animation: process-route-draw 10s linear infinite;
+  animation-play-state: paused;
+}
+.process-stop-halo { fill: var(--ivory); }
+.process-stop-dot { fill: var(--copper); }
+.process-stop-ring {
+  fill: none;
+  stroke: var(--copper-light);
+  stroke-width: 1;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: process-stop-pulse 10s var(--ease-out) infinite;
+  animation-play-state: paused;
+}
+.process-traveler-trail { fill: var(--lagoon-400); }
+.process-traveler-trail--far { opacity: 0.12; }
+.process-traveler-trail--near { opacity: 0.28; }
+.process-traveler-halo { fill: rgba(43,174,170,0.14); stroke: rgba(43,174,170,0.22); stroke-width: 1; }
+.process-traveler-core { fill: var(--bosphorus-950); stroke: var(--copper-light); stroke-width: 1; }
+.process-traveler-plane { fill: var(--ivory); stroke: none; }
 .process-steps article { position: relative; padding-top: 60px; }
 .process-steps article > span { position: absolute; inset-block-start: 0; inset-inline-end: 0; color: var(--sand); font-size: 70px; line-height: 1; font-weight: 500; letter-spacing: -0.06em; }
-.process-icon { display: grid; place-items: center; width: 55px; height: 55px; margin-bottom: 30px; border: 1px solid var(--line); border-radius: 50%; background: var(--ivory); color: var(--teal-650); }
+.process-icon {
+  display: grid;
+  place-items: center;
+  width: 55px;
+  height: 55px;
+  margin-bottom: 30px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--ivory);
+  color: var(--teal-650);
+  animation: process-icon-pulse 10s var(--ease-standard) infinite;
+  animation-play-state: paused;
+}
+.process-stop--2 .process-stop-ring,
+.process-steps article:nth-of-type(2) .process-icon { animation-delay: 3.8s; }
+.process-stop--3 .process-stop-ring,
+.process-steps article:nth-of-type(3) .process-icon { animation-delay: 7.6s; }
+.process-steps.is-route-active .process-line-progress,
+.process-steps.is-route-active .process-stop-ring,
+.process-steps.is-route-active .process-icon { animation-play-state: running; }
 .process-steps h3 { margin-bottom: 13px; font-size: 24px; font-weight: 600; letter-spacing: -0.03em; }
 .process-steps p { max-width: 290px; color: var(--muted); font-size: 13px; }
+@keyframes process-route-draw {
+  0% { stroke-dashoffset: 1; opacity: 0; }
+  5% { opacity: 1; }
+  78% { stroke-dashoffset: 0; opacity: 1; }
+  86% { stroke-dashoffset: 0; opacity: 1; }
+  96%, 100% { stroke-dashoffset: 0; opacity: 0; }
+}
+@keyframes process-stop-pulse {
+  0% { opacity: 0.65; transform: scale(0.55); }
+  10% { opacity: 0; transform: scale(1.7); }
+  10.01%, 100% { opacity: 0; transform: scale(0.55); }
+}
+@keyframes process-icon-pulse {
+  0%, 12%, 100% { border-color: var(--line); color: var(--teal-650); box-shadow: 0 0 0 0 rgba(184,107,61,0); }
+  4% { border-color: var(--copper-light); color: var(--copper); box-shadow: 0 0 0 9px rgba(184,107,61,0.09), 0 8px 25px rgba(6,47,51,0.07); }
+}
 
 /* Planner */
 .planner-section { overflow: hidden; background: var(--bosphorus-950); color: var(--ivory); }
@@ -877,4 +941,6 @@ html[dir="rtl"] .marquee-track { animation-direction: reverse; }
   [data-reveal], .hero-eyebrow, .hero-intro, .hero-actions, .hero-assurance, .hero-visual { opacity: 1; transform: none; }
   .title-line > span { transform: none; }
   .marquee-track { animation: none; }
+  .process-line-progress, .process-traveler, .process-stop-ring { display: none; }
+  .process-icon { animation: none !important; }
 }
